@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apps2cms-auth-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apps2cms-auth-mongo
+  template:
+    metadata:
+      labels:
+        app: apps2cms-auth-mongo
+    spec:
+      containers:
+        - name: apps2cms-auth-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apps2cms-auth-mongo-srv
+spec:
+  selector:
+    app: apps2cms-auth-mongo
+  ports:
+    - name: mongodb
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
