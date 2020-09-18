@@ -8,9 +8,9 @@ metadata:
 spec:
   rules:
     - host: apps2cms.dev
-    http:
-      paths:
-        - path: /api/hello
-          backend:
-            serviceName: auth-api-srv
-            servicePort: 4000
+      http:
+        paths:
+          - path: /api/hello/?(.*)
+            backend:
+              serviceName: apps2cms-auth-api-srv
+              servicePort: 4000
