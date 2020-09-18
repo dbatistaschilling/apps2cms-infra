@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apps2-auth-depl
+  name: auth-api-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: apps2-auth
+      app: auth-api
   template:
     metadata:
       labels:
-        app: apps2-auth
+        app: auth-api
     spec:
       containers:
-        - name: apps2-auth
-          image: apps2cms/apps2-auth
+        - name: auth-api
+          image: apps2cms/auth-api
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: apps2-auth-srv
+  name: auth-api-srv
 spec:
   selector:
-    app: apps2-auth
+    app: auth-api
   ports:
-    - name: apps2-auth
+    - name: auth-api
       protocol: TCP
       port: 4000
       targetPort: 4000
