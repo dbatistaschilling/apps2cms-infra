@@ -10,7 +10,7 @@ spec:
     - host: apps2cms.dev
       http:
         paths:
-          - path: /api/hello/?(.*)
+          - path: /api/auth/?(.*)
             backend:
               serviceName: apps2cms-auth-api-srv
               servicePort: 4000
